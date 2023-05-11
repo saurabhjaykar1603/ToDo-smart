@@ -3,7 +3,14 @@ import './App.css'
 import Addicon from './plus.png'
 
 function App() {
-  const [mylist, setMyList,] = useState([]);
+  const [mylist, setMyList] = useState([]);
+  const [task, setTask] = useState('');
+
+  function addTask() {
+    // The JavaScript spread operator ( ... ) allows us to quickly copy all or part of an existing array or object into another array or object.
+
+    setMyList([...mylist, task]);
+  }
 
   return (
     <div className='app-container'>
@@ -11,10 +18,10 @@ function App() {
 
       <div className="list-group">
         {
-          mylist.map((task) => {
+          mylist.map((t) => {
             return (
               <div className="task">
-                {task}
+                {t}
               </div>
             )
           })
@@ -22,8 +29,10 @@ function App() {
       </div>
 
       <div className='input-container'>
-        <input type="text" className="input-todo" />
-        <img src={Addicon} alt="" className="add-icon" />
+        <input type="text" className="input-todo" placeholder='Enter Task' value={task} onChange={(e) => {
+          setTask(e.target.value);
+        }} />
+        <img src={Addicon} alt="" className="add-icon" onClick={addTask} />
       </div>
     </div>
   )
