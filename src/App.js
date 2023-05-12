@@ -27,10 +27,10 @@ function App() {
           mylist.map((t, index) => {
             return (
               <div className="task">
-                {t} <br />
-                <button onClick={() => {
+                {t} 
+                <span onClick={() => {
                   deletTask(index)
-                }}>Delet</button>
+                }}>✖</span>
               </div>
             )
           })
