@@ -12,6 +12,11 @@ function App() {
     setMyList([...mylist, task]);
     setTask('')
   }
+  function deletTask(index) {
+    mylist.splice(index, 1);
+    setMyList([...mylist])
+
+  }
 
   return (
     <div className='app-container'>
@@ -19,10 +24,13 @@ function App() {
 
       <div className="list-group">
         {
-          mylist.map((t) => {
+          mylist.map((t, index) => {
             return (
               <div className="task">
-                {t}
+                {t} <br />
+                <button onClick={() => {
+                  deletTask(index)
+                }}>Delet</button>
               </div>
             )
           })
